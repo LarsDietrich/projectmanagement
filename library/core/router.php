@@ -9,11 +9,10 @@
 	 * @category   Library
 	 * @package    Router Package
 	 * @author     Adam Boerema <adamboerema@gmail.com>
-	 * @license    http://www.php.net/license/3_01.txt  PHP License 3.01
 	 * @version    0.1
 	 */
 	
-	class router{
+	class Router{
 		
 		 //Url to be broken to segments
 		public $url = null;
@@ -27,6 +26,7 @@
 		 * @return  null
 		 */
 		public function __construct($url){
+			spl_autoload_register(array($this, 'autoload'));
 			$this->url = $url;
 		}
 		
@@ -41,13 +41,13 @@
 		 * @TODO ADD ERROR LOG AND REDIRECT
 		 * 
 		 */
-		function __autoload($className) {
+		public function autoload($className) {
 			//Lowercase the class name
 			$className = strtolower($className);
 			
-			//Core
-		    if (file_exists(ROOT."/application/library/core/{$className}.php")) {
-		        require_once(ROOT."/application/library/core/{$className}.php");
+			//Framework Core Files
+ 		    if (file_exists(ROOT."/library/core/{$className}.php")) {
+		        require_once(ROOT."/library/core/{$className}.php");
 		    } 
 		    //Controllers
 		    if (file_exists(ROOT."/application/controllers/{$className}.php")) {
@@ -59,6 +59,7 @@
 		    } 
 		    //Class not found. Error report
 		    else {
+		    	echo "{$className} not found!";
 		        /* Error Generation Code Here */
 		    }
 		}
@@ -111,7 +112,7 @@
 			//Create call to the base controller
 		    $dispatch = new $controller($controllerName, $model, $action);
 			
-			//Attempt to 
+			//Attempt to call the class/action
 			if (method_exists($controller, $action)) {
 		        call_user_func_array(array($dispatch,$action), array($value));
 		    } else {
@@ -125,5 +126,6 @@
 	 * INIT ROUTER
 	 *
 	 */
-	$segment = new router($_SERVER['REQUEST_URI']);
+	$segment = new Router($_SERVER['REQUEST_URI']);
 	$url = $segment->route();
+	

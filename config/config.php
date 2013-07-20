@@ -7,6 +7,6 @@
 		 */
 		 
 		define('DB_HOST', 'localhost');
-		define('DB_USER', 'purplerock');
-		define('DB_PASS', 'Sc!$$0rs');
-		define('DB_NAME', 'publix_healthwellness_stage'); 
+		define('DB_USER', 'root');
+		define('DB_PASS', '');
+		define('DB_NAME', 'adamcamp'); 

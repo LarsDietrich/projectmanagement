@@ -8,7 +8,6 @@
 	 * @category   Library
 	 * @package    Controller Package
 	 * @author     Adam Boerema <adamboerema@gmail.com>
-	 * @license    http://www.php.net/license/3_01.txt  PHP License 3.01
 	 * @version    0.1
 	 */
 	 
@@ -19,9 +18,18 @@
 		protected $model;
 	    protected $action;
 	    protected $template;
-	 
+	 	
+		
+		/**
+		 * Class constructor
+		 *
+		 * @access  public
+		 * @return  null
+		 */
 	    function __construct($controller, $model, $action) {
-	         
+	    	
+			var_dump($controller, $model, $action);
+
 	        $this->controller = $controller;
 	        $this->action = $action;
 	        $this->model = $model;
@@ -30,13 +38,27 @@
 	        $this->template = new Template($controller,$action);
 	 
 	    }
-	 
+		
+	 	/**
+		 * Method set
+		 * Passes variables to the template view
+		 *
+		 * @access  public
+		 * @param   string value name
+		 * @param	string value
+		 * @return  null
+		 */
 	    function set($name,$value) {
 	        $this->template->set($name,$value);
 	    }
-	 
+	 	
+		/**
+		 * Class destructor
+		 *
+		 * @access  public
+		 * @return  null
+		 */
 	    function __destruct() {
 	        $this->template->render();
 	    }
-	         
 	}
