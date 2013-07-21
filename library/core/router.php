@@ -26,7 +26,6 @@
 		 * @return  null
 		 */
 		public function __construct($url){
-			spl_autoload_register(array($this, 'autoload'));
 			$this->url = $url;
 		}
 		
@@ -59,7 +58,7 @@
 		    } 
 		    //Class not found. Error report
 		    else {
-		    	echo "{$className} not found!";
+		    	//echo "{$className} not found!";
 		        /* Error Generation Code Here */
 		    }
 		}
@@ -103,6 +102,10 @@
 			$action = $route['action'];
 			$value = $route['value'];
 			
+			//Default index if no action or controller is set
+			($controller)? $controller : $controller = 'Index';
+			($action)? $action : $action = 'index';
+			
 			//Format the controller name to fit naming convention
 			$controllerName = $controller;
 		    $controller = ucwords($controller);
@@ -127,5 +130,5 @@
 	 *
 	 */
 	$segment = new Router($_SERVER['REQUEST_URI']);
+	spl_autoload_register(array($segment, 'autoload'));
 	$url = $segment->route();
-	

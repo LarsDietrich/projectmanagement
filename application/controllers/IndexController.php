@@ -9,19 +9,11 @@
 	 */
 
 	 class IndexController extends Controller {
-		
-		/**
-		 * Class constructor
-		 *
-		 * @access  public
-		 * @return  null
-		 */
-	    function __construct() {
-	    }
-		
+
 		public function index(){
-			echo "hi!";
+	 		$user = new User();
+			$this->view->user = $user->index();
+			$this->view->test = 'Im putting this here as a test';
 
 		}		
 	 }
-	 	
