@@ -12,7 +12,6 @@
 
 		public function index(){
 	 		$user = new User();
-			$this->view->user = $user->index();
 			$this->view->test = 'Im putting this here as a test';
 
 		}		

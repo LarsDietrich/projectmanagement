@@ -10,8 +10,17 @@
 	 */
 
 	 class User extends Model {
-		public function index(){
-			return 'Hi, you are a user';
-		}
+		
+		/**
+		 * Register Model
+		 * Get the post variables and register the user
+		 *
+		 * @access  public
+		 * @param 	array register values
+		 * @return  boolean success
+		 */
+		 protected function register($user){
+		 	
+		 }
 		
 	 }
