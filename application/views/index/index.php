@@ -14,11 +14,11 @@
 				<input id="email" type="text" name="email">
 			</li>
 			<li>
-				<label for="email">Password:</label>
+				<label for="password">Password:</label>
 				<input id="password" type="password" name="password">
 			</li>
 			<li>
-				<label for="email">Confirm Password:</label>
+				<label for="password-confirm">Confirm Password:</label>
 				<input id="password-confirm" type="password" name="password_confirm">
 			</li>
 		

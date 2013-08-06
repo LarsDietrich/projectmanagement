@@ -31,8 +31,21 @@
 		 * @return  boolean success
 		 */
 		 public function register(){
-			var_dump($_POST);
-			
+		    $user = array(
+                'first_name'        => $_POST['first_name'],
+                'last_name'         => $_POST['last_name'],
+                'email'             => $_POST['email'],
+                'password'          => $_POST['password'],
+                'password_confirm'  => $_POST['password_confirm']
+            );
+            //If passwords match
+			if($_POST['password'] == $_POST['password_confirm']){
+			    if($this->userModel->register($user)){
+			         echo 'woooot';   
+			    } else {
+			        echo 'no :(';
+			    }
+			}
 		 }
 		 
 		 

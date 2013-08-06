@@ -18,9 +18,6 @@
 		//database connection
 		protected $db = null;
 		
-		//Error reporting
-		protected $errors = array();
-		
 		/**
 		 * Connect to PDO
 		 *
@@ -41,20 +38,5 @@
 				$this->db = null;
 				$this->errors[] = $e->getMessage();
 			}
-		}
-		
-		/**
-		 * Get errors
-		 *
-		 * @access  public
-		 * @return  string errors
-		 * 
-		 */
-		public function errors(){
-			foreach($this->errors as $error){
-				echo $error;			
-			}
-		}
-
-		
+		}		
 	 }

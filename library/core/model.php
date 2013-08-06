@@ -16,7 +16,10 @@
 	 		
 	 	protected $model;
 		protected $table;
-		
+		      
+        //Error reporting
+        protected $errors = array();
+        
  		/**
 		 * Class constructor
 		 *
@@ -29,8 +32,20 @@
 	        $this->model = get_class($this);
 	        $this->table = strtolower($this->model)."s";
 	    }
-	 	
-		
+        
+        /**
+         * Get errors
+         *
+         * @access  public
+         * @return  string errors
+         * 
+         */
+        public function errors(){
+            foreach($this->errors as $error){
+                echo $error;            
+            }
+        }
+
 		/**
 		 * Class destructor
 		 *
