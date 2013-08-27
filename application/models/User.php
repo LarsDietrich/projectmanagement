@@ -32,7 +32,6 @@
                 
                 return true;
 		    } else {
-		        $this->errors[] = 'This email is already in use';
                 return false;
 		    }
 		 }

@@ -3,6 +3,7 @@
 	 * CORE BOOTSTRAP LOAD
 	 * 
 	 */
+	session_start();
 	require_once(ROOT.'/config/config.php');
 	require_once(ROOT.'/library/core/router.php');
 
